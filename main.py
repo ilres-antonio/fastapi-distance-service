@@ -52,7 +52,11 @@ async def get_distance(location: Location):
 
         # Extract distance and duration
         distance = routes['features'][0]['properties']['segments'][0]['distance'] / 1000  # Convert to km
+        ## distance round to 2 decimal places
+        distance = round(distance, 2)
         duration = routes['features'][0]['properties']['segments'][0]['duration'] / 60  # Convert to minutes
+        ## duration round to 0 decimal places
+        duration = round(duration, 0)
 
         logger.info(f"Calculated distance: {distance} km, duration: {duration} min")
 
